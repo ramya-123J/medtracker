@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Patient Panel – MedTrack+{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --sidebar-bg: #1f2c3b;
+      --text-light: #f0f0f0;
+      --main-bg: #f5f7f9;
+      --card-bg: #fff;
+      --card-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      --btn-bg: #1f2c3b;
+      --btn-hover: #162430;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { display: flex; font-family: sans-serif; background: var(--main-bg); }
+    .sidebar {
+      width: 220px;
+      background: var(--sidebar-bg);
+      color: var(--text-light);
+      min-height: 100vh;
+      padding: 20px 0;
+      position: fixed;
+    }
+    .sidebar h2 { text-align: center; margin-bottom: 1rem; }
+    .sidebar ul { list-style: none; padding: 0; }
+    .sidebar li { margin: 0.5rem 0; }
+    .sidebar a {
+      color: var(--text-light);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+    }
+    .sidebar a:hover { background: rgba(255,255,255,0.1); }
+    .main-content {
+      margin-left: 220px;
+      flex: 1;
+      padding: 20px;
+    }
+    header {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+      color: var(--btn-bg);
+    }
+    .btn-primary {
+      background: var(--btn-bg);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .btn-primary:hover { background: var(--btn-hover); }
+    .card {
+      background: var(--card-bg);
+      padding: 1rem;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 1rem;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <h2>MedTrack+</h2>
+    <ul>
+      <li><a href="{{ url_for('patient_dashboard') }}"><i class="fas fa-home"></i>&nbsp;Dashboard</a></li>
+      <li><a href="{{ url_for('book_appointment') }}"><i class="fas fa-calendar-plus"></i>&nbsp;Book Appointment</a></li>
+      <li><a href="{{ url_for('prescriptions') }}"><i class="fas fa-notes-medical"></i>&nbsp;Prescriptions</a></li>
+      <li><a href="{{ url_for('reminders') }}"><i class="fas fa-bell"></i>&nbsp;Reminders</a></li>
+      <li><a href="{{ url_for('patient_profile') }}"><i class="fas fa-user"></i>&nbsp;Profile</a></li>
+      <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="main-content">
+    <header>Welcome, {{ session.get('user_name', 'Patient') }}</header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, msg in messages %}
+          <div class="card">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

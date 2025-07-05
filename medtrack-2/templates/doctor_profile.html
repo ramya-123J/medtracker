@@ -1,0 +1,20 @@
+{% extends 'doctor_base.html' %}
+{% block title %}Doctor Profile – MedTrack+{% endblock %}
+
+{% block content %}
+<div class="card">
+  <h2 style="margin-bottom: 1rem; color: #1f2c3b;">
+    <i class="fas fa-user-md"></i> Doctor Profile
+  </h2>
+
+  <p><strong>Name:</strong> {{ session['user_name'] }}</p>
+  <p><strong>Email:</strong> {{ session['user_email'] }}</p>
+  <p><strong>Specialty:</strong> General Physician</p>
+
+  <hr style="margin: 20px 0; border: 1px solid #eee;">
+
+  <p><strong>Contact:</strong> +91-9876543210</p>
+  <p><strong>Experience:</strong> 8+ years</p>
+  <p><strong>Location:</strong> Hyderabad, India</p>
+</div>
+{% endblock %}

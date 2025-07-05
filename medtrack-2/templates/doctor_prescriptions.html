@@ -1,0 +1,20 @@
+{% extends 'doctor_base.html' %}
+
+{% block content %}
+  <h2>Prescriptions</h2>
+
+  {% if prescriptions %}
+    {% for pres in prescriptions %}
+      <div class="card">
+        <p><strong>Patient:</strong> {{ pres.patient_email }}</p>
+        <p><strong>Medication:</strong> {{ pres.medication }}</p>
+        <p><strong>Dosage:</strong> {{ pres.dosage }}</p>
+        <p><strong>Frequency:</strong> {{ pres.frequency }}</p>
+        <p><strong>Instructions:</strong> {{ pres.instructions }}</p>
+        <p><strong>Time:</strong> {{ pres.timestamp }}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No prescriptions issued yet.</p>
+  {% endif %}
+{% endblock %}

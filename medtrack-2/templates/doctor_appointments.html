@@ -1,0 +1,23 @@
+{% extends "doctor_base.html" %}
+{% block content %}
+  <h1>Appointments</h1>
+
+  {% if appointments %}
+    {% for appt in appointments %}
+      <div style="background: #fff; padding: 20px; border-left: 5px solid #1f2c3b; margin-bottom: 15px; box-shadow: 0 0 6px rgba(0,0,0,0.05); border-radius: 6px;">
+        <p><strong>Patient Email:</strong> {{ appt.patient_email }}</p>
+        <p><strong>Date:</strong> {{ appt.date }}</p>
+        <p><strong>Time:</strong> {{ appt.time }}</p>
+        <p><strong>Reason:</strong> {{ appt.reason }}</p>
+        <p><strong>Status:</strong> {{ appt.status }}</p>
+        {% if not appt.prescribed %}
+          <a class="btn" href="{{ url_for('add_prescription', email=appt.patient_email) }}" style="display: inline-block; padding: 8px 15px; background-color: #1f2c3b; color: white; text-decoration: none; border-radius: 4px; margin-top: 10px;">Add Prescription</a>
+        {% else %}
+          <span style="color: green; font-weight: bold;">Prescribed</span>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No appointments found.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,85 @@
+<!-- doctor_base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Panel - MedTrack+</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f1f5f9;
+    }
+    .sidebar {
+      width: 220px;
+      background-color: #1f2c3b;
+      position: fixed;
+      height: 100vh;
+      padding: 20px 0;
+      color: #fff;
+    }
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00bcd4;
+    }
+    .sidebar-nav {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar-nav li {
+      margin: 15px 0;
+    }
+    .sidebar-nav a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      padding: 10px 20px;
+      transition: background 0.3s;
+    }
+    .sidebar-nav a:hover {
+      background-color: #007b8f;
+      border-radius: 4px;
+    }
+    .sidebar-nav i {
+      margin-right: 10px;
+    }
+    .main-content {
+      margin-left: 220px;
+      padding: 30px;
+    }
+    footer {
+      background-color: #1f2c3b;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: calc(100% - 220px);
+      margin-left: 220px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>MedTrack+</h2>
+    <ul class="sidebar-nav">
+      <li><a href="{{ url_for('doctor_dashboard') }}"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="{{ url_for('doctor_appointments') }}"><i class="fas fa-calendar-check"></i> Appointments</a></li>
+      <li><a href="{{ url_for('doctor_prescriptions') }}"><i class="fas fa-pills"></i> Prescriptions</a></li>
+      <li><a href="{{ url_for('doctor_profile') }}"><i class="fas fa-user-md"></i> Profile</a></li>
+      <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <footer>
+    &copy; 2025 MedTrack+. All rights reserved.
+  </footer>
+</body>
+</html>

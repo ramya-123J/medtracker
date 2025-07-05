@@ -1,0 +1,16 @@
+{% extends 'doctor_base.html' %}
+
+{% block content %}
+  <h2>Add Prescription for {{ patient_email }}</h2>
+
+  <form method="POST" style="background: #fff; padding: 20px; max-width: 600px; border-left: 5px solid #1f2c3b; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+    <input type="text" name="medication" placeholder="Medication Name" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:4px;" />
+    <input type="text" name="dosage" placeholder="Dosage (e.g., 500mg)" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:4px;" />
+    <input type="text" name="frequency" placeholder="Frequency (e.g., Twice a day)" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:4px;" />
+    <textarea name="instructions" placeholder="Instructions" rows="4" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:4px;"></textarea>
+    <input type="time" name="time" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:4px;" />
+    <button type="submit" style="padding: 10px 20px; background-color: #1f2c3b; color: white; border: none; border-radius: 4px; cursor: pointer;">
+      <i class="fas fa-plus"></i> Add Prescription
+    </button>
+  </form>
+{% endblock %}

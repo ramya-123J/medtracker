@@ -1,0 +1,22 @@
+{% extends "patient_base.html" %}
+{% block title %}Your Profile{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h2><i class="fas fa-user"></i> Profile</h2>
+</div>
+
+<div class="dashboard-section">
+  <div class="card">
+    <p><strong>Name:</strong> {{ session.get('user_name', 'N/A') }}</p>
+    <p><strong>Email:</strong> {{ session.get('user_email') }}</p>
+    <p><strong>Phone:</strong> {{ session.get('user_phone', 'N/A') }}</p>
+  </div>
+</div>
+
+<div class="dashboard-actions">
+  <p style="color: var(--text-dark); font-size: 0.9rem;">
+    If you need to update your information, please contact our support.
+  </p>
+</div>
+{% endblock %}
